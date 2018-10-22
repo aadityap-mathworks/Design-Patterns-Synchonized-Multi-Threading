@@ -2,6 +2,12 @@ package workerThreads.driver;
 
 import java.io.File;
 
+import workerThreads.myWorkers.CreateWorkers;
+import workerThreads.myWorkers.IsPrime;
+import workerThreads.util.FileProcessor;
+import workerThreads.util.Results;
+import workerThreads.util.myLogger;
+
 /**
  * @author Aaditya Sakharam Patil
  *
@@ -27,11 +33,18 @@ public class Driver {
 			}
 			
 			/**
+			 *Storing command line arguments
+			 */
+			String inputFile=args[0];
+			int noOfThreads = Integer.parseInt(args[1]);
+			int debugValue = Integer.parseInt(args[2]);
+			
+			/**
 			 *argument validation
 			 *check if file exists
 			 *check if input file is empty
 			 */
-			File file1 = new File(args[0]);
+			File file1 = new File(inputFile);
 			if (!file1.exists()) 
 			{
 				System.out.println("Input file does not exist.");
@@ -44,16 +57,32 @@ public class Driver {
 			}
 			
 			/**
-			 *Storing command line arguments
+			 *argument validation
+			 *check if the Number of argument is between 1 to 5
 			 */
-			String inputFile=args[0];
-			String noOfThreads = args[1];
-			String debugValue = args[2];
-			System.out.println(inputFile);
-			System.out.println(noOfThreads);
-			System.out.println(debugValue);
+			if(noOfThreads<1 || noOfThreads>5)
+			{
+				System.out.println("wrong no of threads");
+				System.exit(1);
+			}
 			
+			/**
+			 *argument validation
+			 *check if the debug value is between 0 to 4
+			 */
+			if(debugValue<0 || debugValue>4)
+			{
+				System.out.println("wrong debug value");
+				System.exit(1);
+			}
 			
+			myLogger.setDebugValue(debugValue);
+			IsPrime prime=new IsPrime();
+			FileProcessor fp= new FileProcessor(inputFile);
+			Results res =new Results();
+			
+			CreateWorkers cw = new CreateWorkers(fp, res, prime);
+			cw.startWorkers(noOfThreads);
 		}
 		catch (Exception e) {
 			e.printStackTrace();

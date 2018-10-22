@@ -1,4 +1,4 @@
-# CSX42: Assignment 1
+# CSX42: Assignment 3
 ## Name: Aaditya Sakharam Patil
 -----------------------------------------------------------------------
 -----------------------------------------------------------------------
@@ -6,12 +6,12 @@
 -----------------------------------------------------------------------
 
 Following are the commands and the instructions to run ANT on project.
-#### Note: build.xml is present in coursesRegistration/src folder.
+#### Note: build.xml is present in workerThreads/src folder.
 
 -----------------------------------------------------------------------
 ## Instruction to clean:
 
-####Command: ant -buildfile coursesRegistration/src/build.xml clean
+####Command: ant -buildfile workerThreads/src/build.xml clean
 
 Description: It cleans up all the .class files that were generated when 
 you compiled your code.
@@ -19,7 +19,7 @@ you compiled your code.
 -----------------------------------------------------------------------
 ## Instruction to compile:
 
-####Command: ant -buildfile coursesRegistration/src/build.xml all
+####Command: ant -buildfile workerThreads/src/build.xml all
 
 Description: Compiles code and generates .class files inside the BUILD 
 folder.
@@ -27,20 +27,14 @@ folder.
 -----------------------------------------------------------------------
 ## Instruction to run:
 
-####Command: ant -buildfile coursesRegistration/src/build.xml run -Darg0=<input_file1.txt> -Darg1=<input_file2.txt> 
-Note: Arguments accept the absolute path of the files.
+####Command: ant -buildfile workerThreads/src/build.xml run -Darg0=src/input.txt -Darg1=number_of_threads -Darg2=debug_value 
+
+Note: For this command to work correctly place all the files in src directory. 
+else, Arguments accept the absolute path of the files.
 
 -----------------------------------------------------------------------
 ## Description:
-Time Complexity is O(n^2)
 
-I have used ArrayList of type class Courses to store course details.
-Switch case is used to get course preferences in a loop and then 
-schedule them in class Allocation.
-Results are stored in Class Results with arrayList of type class
-Registration.
-
-Implemented methods interfaces in Results class. 
 
 -----------------------------------------------------------------------
 ### Academic Honesty statement:
@@ -52,6 +46,6 @@ I am involved in plagiarism or cheating an official form will be
 submitted to the Academic Honesty Committee of the Watson School to
 determine the action that needs to be taken. "
 
-Date: 09/21/2018
+Date:
 
 
