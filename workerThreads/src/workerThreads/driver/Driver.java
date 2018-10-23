@@ -83,6 +83,7 @@ public class Driver {
 			
 			CreateWorkers cw = new CreateWorkers(fp, res, prime);
 			cw.startWorkers(noOfThreads);
+			res.writeSumToScreen();
 		}
 		catch (Exception e) {
 			e.printStackTrace();
