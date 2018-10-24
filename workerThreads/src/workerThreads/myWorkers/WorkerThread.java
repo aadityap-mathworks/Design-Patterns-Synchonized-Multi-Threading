@@ -3,6 +3,7 @@ package workerThreads.myWorkers;
 import workerThreads.util.FileProcessor;
 import workerThreads.util.IsPrime;
 import workerThreads.util.Results;
+import workerThreads.util.myLogger;
 
 public class WorkerThread implements Runnable{
 
@@ -24,6 +25,7 @@ public class WorkerThread implements Runnable{
 	{
 		try
 		{		
+			myLogger.writeOuput("run method started",myLogger.DebugLevel.RUN_METHOD);
 			String currentline;
 			while ((currentline = fp.readInputLine()) != null) 
 			{

@@ -23,11 +23,24 @@ public class CreateWorkers{
 	
 	public void startWorkers(int numOfThreads)
 	{
-		for(int i=0; i<numOfThreads; i++)
+		try {
+			
+		
+			for(int i=0; i<numOfThreads; i++)
+			{
+				WorkerThread wt = pool.borrowThreads();
+				Thread t= new Thread(wt);
+				t.start();
+				t.join();
+			}
+		}
+		catch(Exception e)
 		{
-			WorkerThread wt = pool.borrowThreads();
-			Thread t= new Thread(wt);
-			t.start();
+			e.printStackTrace();
+			System.exit(1);
+		}
+		finally {
+			
 		}
 	}
 	

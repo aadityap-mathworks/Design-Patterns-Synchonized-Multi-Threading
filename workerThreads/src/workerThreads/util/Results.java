@@ -24,15 +24,18 @@ public class Results implements StdoutDisplayInterface {
 	
 	public void storeFinalResult(String res)
 	{
-		finalList.add(res);
+		try {
+			
+			finalList.add(res);
+			myLogger.writeOuput("Entry "+res+" is added to result", myLogger.DebugLevel.ADDITION_TO_RESULT);
+		}
+		catch(Exception e)
+		{
+			
+		}
+		finally {}
+		
 	}
-
-	
-	public void clearResult()
-	{
-		finalList.clear();
-	}
-	
 	
 	@Override
 	public void writeSumToScreen() 
