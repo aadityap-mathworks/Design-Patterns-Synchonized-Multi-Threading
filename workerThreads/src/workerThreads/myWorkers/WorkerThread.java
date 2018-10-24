@@ -1,6 +1,7 @@
 package workerThreads.myWorkers;
 
 import workerThreads.util.FileProcessor;
+import workerThreads.util.IsPrime;
 import workerThreads.util.Results;
 
 public class WorkerThread implements Runnable{
@@ -12,9 +13,10 @@ public class WorkerThread implements Runnable{
 	
 	public WorkerThread(FileProcessor fpIn, Results resIn, IsPrime primeIn ) 
 	{
-		fp= fpIn; 
-		res=resIn;
-		prime= primeIn;
+		this.fp= fpIn; 
+		this.res=resIn;
+		this.prime= primeIn;
+		
 	}
 
 	@Override
@@ -32,8 +34,9 @@ public class WorkerThread implements Runnable{
 					res.storeFinalResult(currentline);
 				}
 			}
+			Thread.sleep(100);
 		}
-		catch(Exception e)
+		catch(InterruptedException e)
 		{
 		    e.printStackTrace();
 		    System.exit(1);

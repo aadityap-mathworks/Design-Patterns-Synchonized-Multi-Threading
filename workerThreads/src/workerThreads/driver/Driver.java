@@ -3,8 +3,8 @@ package workerThreads.driver;
 import java.io.File;
 
 import workerThreads.myWorkers.CreateWorkers;
-import workerThreads.myWorkers.IsPrime;
 import workerThreads.util.FileProcessor;
+import workerThreads.util.IsPrime;
 import workerThreads.util.Results;
 import workerThreads.util.myLogger;
 
@@ -77,6 +77,7 @@ public class Driver {
 			}
 			
 			myLogger.setDebugValue(debugValue);
+			//ThreadPool pool = ThreadPool.newFixedPool(10); 
 			IsPrime prime=new IsPrime();
 			FileProcessor fp= new FileProcessor(inputFile);
 			Results res =new Results();

@@ -1,4 +1,4 @@
-package workerThreads.myWorkers;
+package workerThreads.util;
 
 public class IsPrime {
 	

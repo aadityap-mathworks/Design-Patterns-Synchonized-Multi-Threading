@@ -18,17 +18,21 @@ public class Results implements StdoutDisplayInterface {
 		
 	}
 	
+	
 	public static ArrayList<String> finalList = new ArrayList<String>();
+	
 	
 	public void storeFinalResult(String res)
 	{
 		finalList.add(res);
 	}
 
+	
 	public void clearResult()
 	{
 		finalList.clear();
 	}
+	
 	
 	@Override
 	public void writeSumToScreen() 
