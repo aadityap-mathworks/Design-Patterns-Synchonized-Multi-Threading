@@ -2,8 +2,8 @@ package workerThreads.myWorkers;
 
 import workerThreads.util.FileProcessor;
 import workerThreads.util.IsPrime;
+import workerThreads.util.MyLogger;
 import workerThreads.util.Results;
-import workerThreads.util.myLogger;
 
 public class WorkerThread implements Runnable{
 
@@ -14,6 +14,7 @@ public class WorkerThread implements Runnable{
 	
 	public WorkerThread(FileProcessor fpIn, Results resIn, IsPrime primeIn ) 
 	{
+		MyLogger.writeOuput("Constructor of WorkerThread is called", MyLogger.DebugLevel.CONSTRUCTOR);
 		this.fp= fpIn; 
 		this.res=resIn;
 		this.prime= primeIn;
@@ -25,20 +26,21 @@ public class WorkerThread implements Runnable{
 	{
 		try
 		{		
-			myLogger.writeOuput("run method started",myLogger.DebugLevel.RUN_METHOD);
+			MyLogger.writeOuput("run method of "+Thread.currentThread().getName()+" started",MyLogger.DebugLevel.RUN_METHOD);
 			String currentline;
 			while ((currentline = fp.readInputLine()) != null) 
 			{
-				//System.out.println(currentline);
+				//System.out.println("in run is "+Thread.currentThread().getName()+" reads "+currentline);
 				int number = Integer.parseInt(currentline);
 				if(prime.findPrime(number))
 				{
 					res.storeFinalResult(currentline);
 				}
+				Thread.sleep((int) (Math.random() * 200));
+				
 			}
-			Thread.sleep(100);
 		}
-		catch(InterruptedException e)
+		catch(Exception e)
 		{
 		    e.printStackTrace();
 		    System.exit(1);

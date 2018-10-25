@@ -21,6 +21,7 @@ public class FileProcessor
 	public FileProcessor(String filename)
 	{
 		try {
+			MyLogger.writeOuput("Constructor of FileProcessor is called", MyLogger.DebugLevel.CONSTRUCTOR);
 			File input = new File(filename);
 			inputReader = new BufferedReader(new FileReader(input));
 		}
@@ -35,12 +36,14 @@ public class FileProcessor
 	/**
 	 *Reads line from input file
 	 */
-	 public String readInputLine() 
+	 public synchronized String readInputLine() 
 	 {
 			try{
+				//System.out.println("in process is "+Thread.currentThread().getName());
 				String currentline;
 				while ((currentline = inputReader.readLine()) != null) 
 				{	
+					//System.out.println("in process is "+Thread.currentThread().getName()+" reads "+currentline);
 					if(currentline.equals(""))
 					{
 						return null;

@@ -5,8 +5,9 @@ import java.io.File;
 import workerThreads.myWorkers.CreateWorkers;
 import workerThreads.util.FileProcessor;
 import workerThreads.util.IsPrime;
+import workerThreads.util.MyLogger;
 import workerThreads.util.Results;
-import workerThreads.util.myLogger;
+
 
 /**
  * @author Aaditya Sakharam Patil
@@ -60,11 +61,11 @@ public class Driver {
 			 *argument validation
 			 *check if the Number of argument is between 1 to 5
 			 */
-			if(noOfThreads<1 || noOfThreads>5)
-			{
-				System.out.println("wrong no of threads");
-				System.exit(1);
-			}
+//			if(noOfThreads<1 || noOfThreads>5)
+//			{
+//				System.out.println("wrong no of threads");
+//				System.exit(1);
+//			}
 			
 			/**
 			 *argument validation
@@ -76,7 +77,7 @@ public class Driver {
 				System.exit(1);
 			}
 			
-			myLogger.setDebugValue(debugValue);
+			MyLogger.setDebugValue(debugValue);
 			//ThreadPool pool = ThreadPool.newFixedPool(10); 
 			IsPrime prime=new IsPrime();
 			FileProcessor fp= new FileProcessor(inputFile);
@@ -85,6 +86,10 @@ public class Driver {
 			CreateWorkers cw = new CreateWorkers(fp, res, prime);
 			cw.startWorkers(noOfThreads);
 			res.writeSumToScreen();
+//			for(int i=0;i<res.finalList.size();i++)
+//			{
+//				System.out.println(res.finalList.get(i));
+//			}
 		}
 		catch (Exception e) {
 			e.printStackTrace();

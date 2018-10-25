@@ -1,9 +1,9 @@
 package workerThreads.util;
 
-public class myLogger {
+public class MyLogger {
 
-	public myLogger() {
-		// TODO Auto-generated constructor stub
+	private MyLogger() {
+		MyLogger.writeOuput("Constructor of MyLogger is called", MyLogger.DebugLevel.CONSTRUCTOR);
 	}
 	
 

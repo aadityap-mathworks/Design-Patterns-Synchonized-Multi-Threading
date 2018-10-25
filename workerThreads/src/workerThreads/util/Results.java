@@ -15,19 +15,22 @@ public class Results implements StdoutDisplayInterface {
 	 */
 	public Results()
 	{
-		
+		MyLogger.writeOuput("Constructor of Results is called", MyLogger.DebugLevel.CONSTRUCTOR);
 	}
 	
 	
 	public static ArrayList<String> finalList = new ArrayList<String>();
 	
 	
-	public void storeFinalResult(String res)
+	public synchronized void storeFinalResult(String res)
 	{
-		try {
-			
-			finalList.add(res);
-			myLogger.writeOuput("Entry "+res+" is added to result", myLogger.DebugLevel.ADDITION_TO_RESULT);
+		try 
+		{
+			if(!finalList.contains(res))
+			{
+				finalList.add(res);
+				MyLogger.writeOuput(Thread.currentThread().getName()+" stores "+res, MyLogger.DebugLevel.ADDITION_TO_RESULT);
+			}
 		}
 		catch(Exception e)
 		{
@@ -46,7 +49,13 @@ public class Results implements StdoutDisplayInterface {
 			{
 				sum= sum + Integer.parseInt(finalList.get(i));
 			}
-			myLogger.writeOuput("The sume of all the prime numbers is: "+sum+ "", myLogger.DebugLevel.NONE);
+			//System.out.println(sum);
+			MyLogger.writeOuput("The sum of all the prime numbers is: "+sum+ "", MyLogger.DebugLevel.NONE);
+			MyLogger.writeOuput("The sum of all the prime numbers is: "+sum+ "", MyLogger.DebugLevel.ADDITION_TO_RESULT);
+			MyLogger.writeOuput("The sum of all the prime numbers is: "+sum+ "", MyLogger.DebugLevel.CONSTRUCTOR);
+			MyLogger.writeOuput("The sum of all the prime numbers is: "+sum+ "", MyLogger.DebugLevel.RUN_METHOD);
+			MyLogger.writeOuput("Content of Result\n"+finalList+"", MyLogger.DebugLevel.CONTENT_OF_RESULT);
+			MyLogger.writeOuput("The sum of all the prime numbers is: "+sum+ "", MyLogger.DebugLevel.CONTENT_OF_RESULT);
 		}
 		catch(Exception e)
 		{

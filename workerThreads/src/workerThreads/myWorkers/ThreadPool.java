@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import workerThreads.util.FileProcessor;
 import workerThreads.util.IsPrime;
+import workerThreads.util.MyLogger;
 import workerThreads.util.Results;
 
 public class ThreadPool {
@@ -17,6 +18,7 @@ public class ThreadPool {
 	
 	public ThreadPool(FileProcessor fpIn, Results resIn, IsPrime primeIn ) 
 	{
+		MyLogger.writeOuput("Constructor of ThreadPool is called", MyLogger.DebugLevel.CONSTRUCTOR);
 		this.fp= fpIn; 
 		this.res=resIn;
 		this.prime= primeIn;
@@ -27,9 +29,11 @@ public class ThreadPool {
 	{
 		try 
 		{		
+			//System.out.println("adding in pool");
 			for(int i=0 ; i<maxThreads; i++)
 			{		
 				WorkerThread threads = new WorkerThread(fp,res,prime);
+				//System.out.println(threads);
 				pool.add(threads);
 			}
 		}
@@ -52,6 +56,7 @@ public class ThreadPool {
 			else
 			{
 				WorkerThread t = pool.get(0);
+//				pool.remove(0);
 				return t;
 			}	
 		}
