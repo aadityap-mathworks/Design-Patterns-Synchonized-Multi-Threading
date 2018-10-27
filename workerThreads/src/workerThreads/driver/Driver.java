@@ -78,11 +78,29 @@ public class Driver {
 			}
 			
 			MyLogger.setDebugValue(debugValue);
+
+			/**
+			 *Creating instances of IsPrime, FileProcessor and Results
+			 */
 			IsPrime prime=new IsPrime();
 			FileProcessor fp= new FileProcessor(inputFile);
 			Results res =new Results();
+			
+			/**
+			 *Creating instance of CreateWorker 
+			 *@param instances of IsPrime, FileProcessor and Results
+			 */
 			CreateWorkers cw = new CreateWorkers(fp, res, prime);
+			
+			/**
+			 *Calling StartWorker
+			 *@param Number of Threads
+			 */
 			cw.startWorkers(noOfThreads);
+			
+			/**
+			 *Calling writeSumToScreen to print sum on screen
+			 */
 			res.writeSumToScreen();
 
 		}

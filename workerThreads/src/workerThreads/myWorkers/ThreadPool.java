@@ -1,7 +1,11 @@
 package workerThreads.myWorkers;
 
-import java.util.ArrayList;
 
+/**
+ * @author Aaditya Sakharam Patil
+ *
+ */
+import java.util.ArrayList;
 import workerThreads.util.FileProcessor;
 import workerThreads.util.IsPrime;
 import workerThreads.util.MyLogger;
@@ -10,11 +14,15 @@ import workerThreads.util.Results;
 public class ThreadPool {
 	
 	ArrayList<Thread> pool = new ArrayList<>();
-	
 	private FileProcessor fp=null;
 	private Results res= null;
 	private IsPrime prime= null;
 	
+	/**
+	 * Constructor
+	 * @param FileProcessor fpIn, Results resIn, IsPrime primeIn
+	 * Stores message to logger
+	 */
 	public ThreadPool(FileProcessor fpIn, Results resIn, IsPrime primeIn ) 
 	{
 		MyLogger.writeOuput("Constructor of ThreadPool is called", MyLogger.DebugLevel.CONSTRUCTOR);
@@ -24,15 +32,17 @@ public class ThreadPool {
 		
 	}
 	
+	/**
+	 * Method to add threads to pool
+	 * @param Max number of threads
+	 */
 	public void addThreads(int maxThreads)
 	{
 		try 
-		{		
-			//System.out.println("adding in pool");
+		{	
 			for(int i=0 ; i<maxThreads; i++)
 			{		
 				Thread threads = new Thread( new WorkerThread(fp,res,prime)); 
-				//System.out.println(threads);
 				pool.add(threads);
 			}
 		}
@@ -44,13 +54,18 @@ public class ThreadPool {
 		finally {}
 	}	
 	
+	/**
+	 * Method to borrow threads from pool
+	 * returns threads
+	 */
 	public Thread borrowThreads()
 	{
 		try 
 		{		
 			if(pool.isEmpty())
 			{
-				//nahi milega
+				System.err.println("Pool is empty");
+				System.exit(1);
 			}
 			else
 			{

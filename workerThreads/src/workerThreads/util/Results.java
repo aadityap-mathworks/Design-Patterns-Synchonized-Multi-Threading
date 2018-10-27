@@ -11,17 +11,20 @@ public class Results implements StdoutDisplayInterface {
  
 	/**
 	 * Constructor
-	 *
+	 * Stores message to logger
 	 */
 	public Results()
 	{
 		MyLogger.writeOuput("Constructor of Results is called", MyLogger.DebugLevel.CONSTRUCTOR);
 	}
 	
-	
+	//ArrayList to store result
 	public static ArrayList<String> finalList = new ArrayList<String>();
 	
 	
+	/**
+	 * Method to store results in arraylist
+	 */
 	public synchronized void storeFinalResult(String res)
 	{
 		try 
@@ -40,6 +43,10 @@ public class Results implements StdoutDisplayInterface {
 		
 	}
 	
+	/**
+	 * Method to write Sum of all prime no to the Screen
+	 * 
+	 */
 	@Override
 	public void writeSumToScreen() 
 	{
@@ -50,7 +57,7 @@ public class Results implements StdoutDisplayInterface {
 				sum= sum + Integer.parseInt(finalList.get(i));
 			}
 			
-
+			//Adding messages to MyLogger
 			MyLogger.writeOuput("The sum of all the prime numbers is: "+sum+ "", MyLogger.DebugLevel.NONE);
 			MyLogger.writeOuput("The sum of all the prime numbers is: "+sum+ "", MyLogger.DebugLevel.ADDITION_TO_RESULT);
 			MyLogger.writeOuput("The sum of all the prime numbers is: "+sum+ "", MyLogger.DebugLevel.CONSTRUCTOR);
@@ -68,6 +75,13 @@ public class Results implements StdoutDisplayInterface {
 		}
 	}
 
+	@Override
+	public String toString() {
+		return "Results [getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
+				+ "]";
+	}
+
+	
 	
 	
 	

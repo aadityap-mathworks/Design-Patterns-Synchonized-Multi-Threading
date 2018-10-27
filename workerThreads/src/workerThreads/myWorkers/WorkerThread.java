@@ -1,5 +1,10 @@
 package workerThreads.myWorkers;
 
+
+/**
+ * @author Aaditya Sakharam Patil
+ *
+ */
 import workerThreads.util.FileProcessor;
 import workerThreads.util.IsPrime;
 import workerThreads.util.MyLogger;
@@ -12,6 +17,11 @@ public class WorkerThread implements Runnable{
 	private Results res= null;
 	private IsPrime prime= null;
 	
+	/**
+	 * Constructor
+	 * @param FileProcessor fpIn, Results resIn, IsPrime primeIn
+	 * Stores message to logger
+	 */
 	public WorkerThread(FileProcessor fpIn, Results resIn, IsPrime primeIn ) 
 	{
 		MyLogger.writeOuput("Constructor of WorkerThread is called", MyLogger.DebugLevel.CONSTRUCTOR);
@@ -22,6 +32,12 @@ public class WorkerThread implements Runnable{
 		
 	}
 
+	/**
+	 * run method of the thread
+	 * Reads a line from input file
+	 * Checks if the number is prime
+	 * Stores the number to results if it is prime
+	 */
 	@Override
 	public void run() 
 	{

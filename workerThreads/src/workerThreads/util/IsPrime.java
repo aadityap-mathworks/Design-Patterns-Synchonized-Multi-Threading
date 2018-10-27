@@ -1,12 +1,24 @@
 package workerThreads.util;
 
-
+/**
+ * @author Aaditya Sakharam Patil
+ *
+ */
 public class IsPrime {
 	
+	/**
+	 * Constructor
+	 * Stores message to logger
+	 */
 	public IsPrime() {
 		MyLogger.writeOuput("Constructor of IsPrime is called", MyLogger.DebugLevel.CONSTRUCTOR);
 	}
 
+	/**
+	 * Method to check if number is prime
+	 * @param number
+	 * returns true if the number is prime
+	 */
 	public synchronized boolean findPrime(int num)
 	{
 		try 
@@ -26,9 +38,12 @@ public class IsPrime {
 		}
 		return false;
 	}
-	
-	
-	
-	
+
+	@Override
+	public String toString() {
+		return "IsPrime [getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
+				+ "]";
+	}
+
 
 }

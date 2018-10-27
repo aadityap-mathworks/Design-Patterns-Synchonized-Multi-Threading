@@ -1,5 +1,11 @@
 package workerThreads.myWorkers;
 
+
+/**
+ * @author Aaditya Sakharam Patil
+ *
+ */
+
 import java.util.ArrayList;
 import workerThreads.util.FileProcessor;
 import workerThreads.util.IsPrime;
@@ -13,6 +19,11 @@ public class CreateWorkers{
 	private IsPrime prime= null;
 	private ThreadPool pool=null;
 	
+	/**
+	 * Constructor
+	 * @param FileProcessor fpIn, Results resIn, IsPrime primeIn
+	 * Stores message to logger
+	 */
 	public CreateWorkers(FileProcessor fpIn, Results resIn, IsPrime primeIn ) 
 	{
 		MyLogger.writeOuput("Constructor of CreateWorker is called", MyLogger.DebugLevel.CONSTRUCTOR);
@@ -23,6 +34,11 @@ public class CreateWorkers{
 	}
 
 	
+	/**
+	 * Method to Start Worker and join them
+	 * borrows threads from thread pool and starts and join them
+	 * @param number of threads
+	 */
 	public void startWorkers(int numOfThreads)
 	{
 		try {
@@ -35,12 +51,11 @@ public class CreateWorkers{
 					t.add(wt);
 					wt.start();
 				}
-				
+	
 				for(int x=0; x<t.size();x++)
 				{
 						t.get(x).join();	
 				}
-			
 		}
 		catch(Exception e)
 		{
