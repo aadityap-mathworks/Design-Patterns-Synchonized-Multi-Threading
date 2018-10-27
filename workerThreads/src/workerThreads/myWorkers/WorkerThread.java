@@ -15,6 +15,7 @@ public class WorkerThread implements Runnable{
 	public WorkerThread(FileProcessor fpIn, Results resIn, IsPrime primeIn ) 
 	{
 		MyLogger.writeOuput("Constructor of WorkerThread is called", MyLogger.DebugLevel.CONSTRUCTOR);
+		
 		this.fp= fpIn; 
 		this.res=resIn;
 		this.prime= primeIn;
@@ -30,20 +31,24 @@ public class WorkerThread implements Runnable{
 			String currentline;
 			while ((currentline = fp.readInputLine()) != null) 
 			{
-				//System.out.println("in run is "+Thread.currentThread().getName()+" reads "+currentline);
 				int number = Integer.parseInt(currentline);
 				if(prime.findPrime(number))
 				{
 					res.storeFinalResult(currentline);
 				}
-				Thread.sleep((int) (Math.random() * 200));
+				try {
+					Thread.sleep((int) (Math.random() * 200));
+				} catch (InterruptedException e) {
+					MyLogger.writeOuput("Exception occured while making thread sleep \n"+e.toString(), MyLogger.DebugLevel.NONE);
+					System.exit(1);
+				}
 				
 			}
 		}
 		catch(Exception e)
 		{
-		    e.printStackTrace();
-		    System.exit(1);
+			MyLogger.writeOuput("Exception occured in run Method \n"+e.toString(), MyLogger.DebugLevel.NONE);
+			System.exit(1);
 		}
 		finally {}
 	}

@@ -26,8 +26,8 @@ public class FileProcessor
 			inputReader = new BufferedReader(new FileReader(input));
 		}
 		catch(IOException e){
-		    e.printStackTrace();
-		    System.exit(1);
+			MyLogger.writeOuput("Exception occured while reading file in FieProcessor \n"+e.toString(), MyLogger.DebugLevel.NONE);
+			System.exit(1);
 		}
 		finally{ 
 		}
@@ -39,11 +39,10 @@ public class FileProcessor
 	 public synchronized String readInputLine() 
 	 {
 			try{
-				//System.out.println("in process is "+Thread.currentThread().getName());
+				
 				String currentline;
 				while ((currentline = inputReader.readLine()) != null) 
 				{	
-					//System.out.println("in process is "+Thread.currentThread().getName()+" reads "+currentline);
 					if(currentline.equals(""))
 					{
 						return null;
@@ -53,9 +52,8 @@ public class FileProcessor
 				}
 			} catch (IOException ex)
 	        {
-	            System.out.println("Error occureed while reading the file '");
-	            ex.printStackTrace();
-	            System.exit(0);
+				MyLogger.writeOuput("Exception occured while reading file in FieProcessor \n"+ex.toString(), MyLogger.DebugLevel.NONE);
+				System.exit(1);
 	
 	        }	
 			finally {
@@ -71,7 +69,8 @@ public class FileProcessor
 	    	try{
 		    inputReader.close();
 	    	}catch(IOException e){
-		    e.printStackTrace();
+	    		MyLogger.writeOuput("Exception occured while closing file in FieProcessor \n"+e.toString(), MyLogger.DebugLevel.NONE);
+				System.exit(1);
 	    	}
 	    	finally {}
 	}

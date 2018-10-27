@@ -9,8 +9,8 @@ public class IsPrime {
 
 	public synchronized boolean findPrime(int num)
 	{
-		try {
-			//System.out.println("in prime "+Thread.currentThread().getName());
+		try 
+		{
 			if(num%2==0)
 				return false;
 			else
@@ -19,8 +19,8 @@ public class IsPrime {
 		}
 		catch(Exception e)
 		{
-			 e.printStackTrace();
-			 System.exit(1);
+			MyLogger.writeOuput("Exception occured in IsPrime \n"+e.toString(), MyLogger.DebugLevel.NONE);
+			System.exit(1);
 		}
 		finally {
 		}

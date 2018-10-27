@@ -48,12 +48,12 @@ public class Driver {
 			File file1 = new File(inputFile);
 			if (!file1.exists()) 
 			{
-				System.out.println("Input file does not exist.");
+				System.err.println("Error: Input file does not exist.");
 				System.exit(1);
 			}
 			else if(file1.length() == 0)
 			{
-				System.out.println("input file is empty.");
+				System.err.println("Error: Input file is empty.");
 				System.exit(1);
 			}
 			
@@ -61,11 +61,11 @@ public class Driver {
 			 *argument validation
 			 *check if the Number of argument is between 1 to 5
 			 */
-//			if(noOfThreads<1 || noOfThreads>5)
-//			{
-//				System.out.println("wrong no of threads");
-//				System.exit(1);
-//			}
+			if(noOfThreads<1 || noOfThreads>5)
+			{
+				System.err.println("Error: Wrong no of threads. \n It must be between 1 to 5");
+				System.exit(1);
+			}
 			
 			/**
 			 *argument validation
@@ -73,23 +73,18 @@ public class Driver {
 			 */
 			if(debugValue<0 || debugValue>4)
 			{
-				System.out.println("wrong debug value");
+				System.err.println("Error: Wrong debug value. \n It must be between 0 to 4");
 				System.exit(1);
 			}
 			
 			MyLogger.setDebugValue(debugValue);
-			//ThreadPool pool = ThreadPool.newFixedPool(10); 
 			IsPrime prime=new IsPrime();
 			FileProcessor fp= new FileProcessor(inputFile);
 			Results res =new Results();
-			
 			CreateWorkers cw = new CreateWorkers(fp, res, prime);
 			cw.startWorkers(noOfThreads);
 			res.writeSumToScreen();
-//			for(int i=0;i<res.finalList.size();i++)
-//			{
-//				System.out.println(res.finalList.get(i));
-//			}
+
 		}
 		catch (Exception e) {
 			e.printStackTrace();

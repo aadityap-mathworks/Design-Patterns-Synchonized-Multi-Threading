@@ -1,8 +1,6 @@
 package workerThreads.myWorkers;
 
-import java.lang.Thread.State;
 import java.util.ArrayList;
-
 import workerThreads.util.FileProcessor;
 import workerThreads.util.IsPrime;
 import workerThreads.util.MyLogger;
@@ -14,9 +12,7 @@ public class CreateWorkers{
 	private Results res= null;
 	private IsPrime prime= null;
 	private ThreadPool pool=null;
-	public enum States {
-        NEW, RUNNABLE, BLOCKED, WAITING, TIMED_WAITING, TERMINATED;
-    }
+	
 	public CreateWorkers(FileProcessor fpIn, Results resIn, IsPrime primeIn ) 
 	{
 		MyLogger.writeOuput("Constructor of CreateWorker is called", MyLogger.DebugLevel.CONSTRUCTOR);
@@ -35,10 +31,9 @@ public class CreateWorkers{
 				ArrayList<Thread> t= new ArrayList<Thread>();																																																																																																												
 				for(int i=0; i<numOfThreads; i++)
 				{
-					WorkerThread wt = pool.borrowThreads();
-					Thread th = new Thread(wt);
-					t.add(th);
-					th.start();
+					Thread wt = pool.borrowThreads();
+					t.add(wt);
+					wt.start();
 				}
 				
 				for(int x=0; x<t.size();x++)
@@ -49,7 +44,7 @@ public class CreateWorkers{
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
+			MyLogger.writeOuput("Exception occured in StartWorkers \n"+e.toString(), MyLogger.DebugLevel.NONE);
 			System.exit(1);
 		}
 		finally {

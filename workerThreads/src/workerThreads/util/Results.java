@@ -49,7 +49,8 @@ public class Results implements StdoutDisplayInterface {
 			{
 				sum= sum + Integer.parseInt(finalList.get(i));
 			}
-			//System.out.println(sum);
+			
+
 			MyLogger.writeOuput("The sum of all the prime numbers is: "+sum+ "", MyLogger.DebugLevel.NONE);
 			MyLogger.writeOuput("The sum of all the prime numbers is: "+sum+ "", MyLogger.DebugLevel.ADDITION_TO_RESULT);
 			MyLogger.writeOuput("The sum of all the prime numbers is: "+sum+ "", MyLogger.DebugLevel.CONSTRUCTOR);
@@ -59,7 +60,7 @@ public class Results implements StdoutDisplayInterface {
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
+			MyLogger.writeOuput("Exception occured while writing sum to screen"+e.toString(), MyLogger.DebugLevel.NONE);
 			System.exit(1);
 		}
 		finally {
