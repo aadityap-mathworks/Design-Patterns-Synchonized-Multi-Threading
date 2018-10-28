@@ -34,8 +34,13 @@ else, Arguments accept the absolute path of the files.
 
 -----------------------------------------------------------------------
 ## Description:
+Data Structure used for Result:
+ArrayList
 
+Threads synchronously store prime numbers in results's ArrayList.
+We can check if the entry of a no. already exist to avoid duplicates.
 
+Complexity to add a Number: O(n)
 -----------------------------------------------------------------------
 ### Academic Honesty statement:
 -----------------------------------------------------------------------
@@ -46,6 +51,6 @@ I am involved in plagiarism or cheating an official form will be
 submitted to the Academic Honesty Committee of the Watson School to
 determine the action that needs to be taken. "
 
-Date:
+Date: 10/28/2018
 
 
